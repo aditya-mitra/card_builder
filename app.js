@@ -15,6 +15,11 @@ app.post('/test', (req, res) => {
 
 app.use('/', routes);
 
+
+app.use((err, req, res, next) => {
+    res.json(err);
+});
+
 app.listen(9000, () => {
     console.log('api server with postgres db started');
 })
