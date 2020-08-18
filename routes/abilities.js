@@ -3,9 +3,9 @@ const router = Router();
 
 const pool = require('../db');
 
-var gots = ['farm', 'sheep'];
+//var gots = ['farm', 'sheep'];
 //gots = JSON.stringify(gots);
-console.log(gots);
+//console.log(gots);
 router.get('/test', function (req, res, next) {
     insert('10', gots, next);
     //query = `INSERT INTO abilities(name, character_id)
@@ -45,6 +45,26 @@ function insert(character_id, abilities, next) {
     }
 }
 
+function updateAbilities(abilities, character_id){
+    abilities = abilities.trim().toLowerCase();
+    abilities = abilities.split(',');
+    for (let i in abilities) {
+        abilities[i] = abilities[i].trim();
+    }
+
+    pool.query(`DELETE FROM abilities
+                WHERE character_id=($1)`, [character_id])
+        .then(() => {
+            console.info(`Updating all records with character id : ${character_id}`);
+            insert(character_id, abilities);
+        })
+        .catch(err => console.error(err));
+}
+
+router.post('/test', function (req, res) {
+    const { abilities, id } = req.body;
+    updateAbilities(abilities, id);
+})
 
 /* module.exports can only export one object 
 if we are using exports.variable before or after module.exports
