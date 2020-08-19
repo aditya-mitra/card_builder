@@ -17,6 +17,7 @@ app.use('/', routes);
 
 
 app.use((err, req, res, next) => {
+    console.log('you hit the last route\nYou have got the error\n\n', err);
     res.json(err);
 });
 
