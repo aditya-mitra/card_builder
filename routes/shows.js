@@ -38,8 +38,8 @@ function insert(character_id, name, next) {
 
 function updateShows(character_id, shows, next) {
     const query = `UPDATE shows
-                   SET name = ($1)
-                   WHERE character_id = ($2)`;
+                   SET name=($1)
+                   WHERE character_id=($2)`;
 
     pool.query(query, [shows, character_id])
         .then(() => console.info("Updated show with character id: ", character_id, " successfully"))

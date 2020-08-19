@@ -20,6 +20,7 @@ router.get('/presencetest', async (req, res) => {
 
 });
 
+// helper function
 function sanitize(req) {
     let { name, abilities, shows } = req.body;
 
@@ -84,10 +85,6 @@ function updateCharacter(character_id, name, next) {
         .catch(err => next(err));
 }
 
-//router.post('/test', (req, res, next) => {
-//    const { id, name } = req.body;
-//    updateCharacter(id, name, next);
-//})
 
 
 // rows in other tables will automatically be deleted becase we have used CASCADE

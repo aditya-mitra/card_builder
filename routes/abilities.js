@@ -45,12 +45,7 @@ function insert(character_id, abilities, next) {
     }
 }
 
-function updateAbilities(abilities, character_id){
-    abilities = abilities.trim().toLowerCase();
-    abilities = abilities.split(',');
-    for (let i in abilities) {
-        abilities[i] = abilities[i].trim();
-    }
+function updateAbilities(character_id, abilities, next) {
 
     pool.query(`DELETE FROM abilities
                 WHERE character_id=($1)`, [character_id])
@@ -58,7 +53,7 @@ function updateAbilities(abilities, character_id){
             console.info(`Updating all records with character id : ${character_id}`);
             insert(character_id, abilities);
         })
-        .catch(err => console.error(err));
+        .catch(err => next(err));
 }
 
 router.post('/test', function (req, res) {

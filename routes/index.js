@@ -7,17 +7,24 @@ const { shows, updateShows } = require('./shows');
 
 const pool = require('../db');
 
-/*
- * characters -> shows is ONE-ONE relation
- * characters -> abilities is ONE-MANY relation
- */
+// helper functions
+function sanitize(req) {
+    let { name, abilities, shows } = req.body;
 
+    name = name.trim().toLowerCase();
 
-// these routes come before the '/'
-router.use('/characters', character);
-router.use('/abilities', abilities);
-router.use('/shows', shows);
+    abilities = abilities.trim().toLowerCase();
+    abilities = abilities.split(',');
+    for (let i in abilities) {
+        abilities[i] = abilities[i].trim();
+    }
 
+    shows = shows.trim().toLowerCase();
+
+    req.body.name = name;
+    req.body.abilities = abilities;
+    req.body.shows = shows;
+}
 
 function modifyRows(rows) {
 
@@ -34,7 +41,7 @@ function modifyRows(rows) {
             curr++;
 
         }
-        console.log(typeof row.ability, ' is the type of row and its value is ', row.ability, ' and we have ', row);
+        //console.log(typeof row.ability, ' is the type of row and its value is ', row.ability, ' and we have ', row);
         modified[curr].abilities.push(row.ability);
 
     }
@@ -42,6 +49,20 @@ function modifyRows(rows) {
     console.log(modified);
     return modified;
 }
+
+
+/*
+ * characters -> shows is ONE-ONE relation
+ * characters -> abilities is ONE-MANY relation
+ */
+
+
+// these routes come before the '/'
+router.use('/characters', character);
+router.use('/abilities', abilities);
+router.use('/shows', shows);
+
+
 
 // get all cards
 router.get('/', function (req, res, next) {
@@ -72,5 +93,14 @@ router.get('/:id', function (req, res, next) {
         .catch(e => next(e));
 })
 
+
+router.put('/:id', (req, res, next) => {
+    sanitize(req);
+    const { id } = req.params;
+    updateCharacter(id, req.body.name, next);
+    updateAbilities(id, req.body.abilities, next);
+    updateShows(id, req.body.shows, next);
+    return res.redirect('/'+id); // we are being redirected before all the update happens
+})
 
 module.exports = router;
