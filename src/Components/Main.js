@@ -1,43 +1,32 @@
 import React from 'react'
-import { Grid, Reveal, Image } from 'semantic-ui-react';
+import { Grid, Reveal, Image, GridColumn } from 'semantic-ui-react';
 
 import Card from './Card';
 import SideBar from './hocs/SideBar';
 
-const Main = () => (
-    <Grid stackable columns={3} centered>
-        <Grid.Row>
-            <Grid.Column>
-                <Reveal animated='move right'>
-                    <Reveal.Content visible>
-                        <Card />
-                    </Reveal.Content>
-                    <Reveal.Content hidden>
-                        <Image src='https://static1.srcdn.com/wordpress/wp-content/uploads/2019/06/Broly-in-Dragon-Ball-Super-Broly.jpg' size='small' bordered rounded />
-                    </Reveal.Content>
-                </Reveal>
-            </Grid.Column>
-            <Grid.Column>
-                <Card />
-            </Grid.Column>
-            <Grid.Column>
-                <Card />
-            </Grid.Column>
-        </Grid.Row>
 
-        <Grid.Row>
-            <Grid.Column>
+// helper functions
+function produceGrid(n, handleClick) {
+    const m = 3;
+    let grid = [];
+    for (let i = 0; i < n; i++) {
+        let column =
+            <Grid.Column key={i} onClick={handleClick} >
                 <Card />
-            </Grid.Column>
-            <Grid.Column>
-                <Card />
-            </Grid.Column>
-            <Grid.Column>
+            </Grid.Column>;
+        grid.push(column);
+    }
+    return grid;
+}
 
-                <Card />
-            </Grid.Column>
-        </Grid.Row>
-    </Grid>
-)
+const Main = (props) => {
+    const handleClick = props.handleClick;
+    let grid = produceGrid(6, handleClick);
+    return (
+        <Grid stackable columns={3} centered>
+            {grid.map(g => g)}
+        </Grid>
+    )
+}
 
 export default SideBar(Main);

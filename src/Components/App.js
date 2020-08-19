@@ -5,14 +5,13 @@ import React from 'react';
 
 import NavBar from './NavBar';
 import Main from './Main';
+import SideBar from './hocs/SideBar';
 
 function App() {
     return (
         //<Provider store={store}>
             //<div>
-            <div>
-                rendering from app.js
-                <br />
+            <div >
                 <NavBar />
                 <br />
                 <Main />

@@ -7,7 +7,7 @@ const hoc = (Wrapped) => {
     class EnhancedCompo extends Component {
         render() {
             return (
-                <a>
+                <a href="#">
                     <Wrapped />
                 </a>
                 );
