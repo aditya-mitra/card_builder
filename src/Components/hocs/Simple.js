@@ -1,11 +1,19 @@
-import React, {Component } from 'react';
-
-const hoc = (wrapped) => {
-    class inside extends Component {
+import React, { Component } from 'react';
+/*
+ * Component name should always be starting with Capital letter
+ * Otherwise, it will be considered as an html tag
+*/
+const hoc = (Wrapped) => {
+    class EnhancedCompo extends Component {
         render() {
-            return <wrapped />
+            return (
+                <a>
+                    <Wrapped />
+                </a>
+                );
         }
     }
+    return EnhancedCompo;
 }
 
 export default hoc;

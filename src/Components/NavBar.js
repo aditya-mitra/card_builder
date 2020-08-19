@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Input, Menu } from 'semantic-ui-react'
+import { Input, Menu, Search } from 'semantic-ui-react'
 
-export default class MenuExampleSecondary extends Component {
+class NavBar extends Component {
     state = { activeItem: 'home' }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -28,10 +28,12 @@ export default class MenuExampleSecondary extends Component {
                 />
                 <Menu.Menu position='right'>
                     <Menu.Item>
-                        <Input icon='search' placeholder='Search...' />
+                        <Search category fluid />
                     </Menu.Item>
                 </Menu.Menu>
             </Menu>
         )
     }
 }
+
+export default NavBar;

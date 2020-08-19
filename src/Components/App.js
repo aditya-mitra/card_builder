@@ -9,6 +9,7 @@ import Main from './Main';
 function App() {
     return (
         //<Provider store={store}>
+            //<div>
             <div>
                 rendering from app.js
                 <br />
@@ -17,6 +18,7 @@ function App() {
                 <Main />
 
             </div>
+
         //</Provider>
         );
 }

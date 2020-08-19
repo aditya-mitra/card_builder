@@ -1,5 +1,8 @@
 import React from 'react'
-import { Card, Icon } from 'semantic-ui-react'
+import { Card, Icon } from 'semantic-ui-react';
+
+import Simple from './hocs/Simple';
+
 
 const extra = (
     <a>
@@ -15,7 +18,9 @@ const CardExampleCardProps = () => (
         meta='Friend'
         description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'
         extra={extra}
+        raised fluid
     />
+
 )
 
-export default CardExampleCardProps
+export default CardExampleCardProps;
