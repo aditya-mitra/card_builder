@@ -53,6 +53,7 @@ router.post('/test', function (req, res) {
 })
 
 module.exports = {
-    router,
-    insertShows: insert
+    shows: router,
+    insertShows: insert,
+    updateShows
 };

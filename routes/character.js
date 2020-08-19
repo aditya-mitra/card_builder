@@ -90,4 +90,20 @@ function updateCharacter(character_id, name, next) {
 //})
 
 
-module.exports = router;
+// rows in other tables will automatically be deleted becase we have used CASCADE
+function deleteCharacter(character_id) {
+    const query = `DELETE FROM characters
+                  WHERE id=($1)`;
+    pool.query(query, [character_id])
+        .then(() => console.info('Character with id: ' + character_id + ' deleted succesfully'))
+        .catch(e => console.error(e));
+    res.send('done');
+}
+
+router.delete('/:id', function (req, res, next) {
+    const { id } = req.params;
+    deleteCharacter(id);
+})
+
+exports.character = router;
+exports.updateCharacter = updateCharacter;

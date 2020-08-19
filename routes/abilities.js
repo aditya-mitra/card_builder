@@ -71,4 +71,5 @@ if we are using exports.variable before or after module.exports
 */
 
 exports.insertAbilities = insert;
-exports.router = router;
+exports.updateAbilities = updateAbilities;
+exports.abilities = router;
