@@ -67,8 +67,9 @@ router.post('/', async function (req, res, next) {
         .then(character_id => {
             insertShows(character_id, shows, next);
             insertAbilities(character_id, abilities, next);
+            return character_id;
         })
-        .then(() => res.redirect('/characters'))
+        .then(character_id => res.redirect('/' + character_id))
         .catch(error => next(error));
 
 });

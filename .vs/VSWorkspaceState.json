@@ -2,10 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\bin",
-    "\\bin\\secrets",
+    "\\bin\\sql",
     "\\db",
     "\\routes"
   ],
-  "SelectedNode": "\\routes\\index.js",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": true
 }
