@@ -47,11 +47,11 @@ function insert(character_id, abilities, next) {
 
 function updateAbilities(character_id, abilities, next) {
 
-    pool.query(`DELETE FROM abilities
+    return pool.query(`DELETE FROM abilities
                 WHERE character_id=($1)`, [character_id])
         .then(() => {
-            console.info(`Updating all records with character id : ${character_id}`);
             insert(character_id, abilities);
+            return `Updating all records with character id : ${character_id}`;
         })
         .catch(err => next(err));
 }

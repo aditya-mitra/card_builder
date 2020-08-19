@@ -81,7 +81,7 @@ function updateCharacter(character_id, name, next) {
             SET name=($1)
             WHERE id=($2)`;
 
-    pool.query(query, [name, character_id])
+    return pool.query(query, [name, character_id])
         .then(() => console.info('Updated character id :' + character_id + ' successfully'))
         .catch(err => next(err));
 }

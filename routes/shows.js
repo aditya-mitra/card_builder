@@ -41,8 +41,8 @@ function updateShows(character_id, shows, next) {
                    SET name=($1)
                    WHERE character_id=($2)`;
 
-    pool.query(query, [shows, character_id])
-        .then(() => console.info("Updated show with character id: ", character_id, " successfully"))
+    return pool.query(query, [shows, character_id])
+        .then(() => "Updated show with character id: "+character_id+" successfully")
         .catch(e => next(e));
 
 }

@@ -97,10 +97,14 @@ router.get('/:id', function (req, res, next) {
 router.put('/:id', (req, res, next) => {
     sanitize(req);
     const { id } = req.params;
-    updateCharacter(id, req.body.name, next);
-    updateAbilities(id, req.body.abilities, next);
-    updateShows(id, req.body.shows, next);
-    return res.redirect('/'+id); // we are being redirected before all the update happens
+    Promise.all([
+        updateAbilities(id, req.body.abilities, next), // since abilities are 'many', there might (not happend till now) be a problem that we would be getting the old abilities with new shows and character
+        updateCharacter(id, req.body.name, next),
+        updateShows(id, req.body.shows, next)
+    ])
+        .then(values => console.log(values))
+        .then(() => res.redirect('/' + id))
+        .catch(err => console.error(err));
 })
 
 module.exports = router;
