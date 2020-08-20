@@ -40,7 +40,7 @@ const VerticalSidebar = ({ animation, direction, visible, hideBar }) => {
 }
 
 const SidebarExampleSidebar = (WrappedComponent) => {
-    class hoc extends Component {
+    class Hoc extends Component {
         constructor(props) {
             super(props);
             this.state = {
@@ -86,7 +86,7 @@ const SidebarExampleSidebar = (WrappedComponent) => {
             )
         }
     }
-    return hoc;
+    return Hoc;
 }
 
 export default SidebarExampleSidebar;

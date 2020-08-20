@@ -14,6 +14,7 @@ const extra = (
 const CardExampleCardProps = () => (
     <Card
         image='https://vignette.wikia.nocookie.net/characterprofile/images/a/a6/Broly_artwork.png/revision/latest/scale-to-width-down/340?cb=20190515183751'
+        link
         header='Elliot Baker'
         meta='Friend'
         description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'

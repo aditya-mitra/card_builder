@@ -23,10 +23,13 @@ const Main = (props) => {
     const handleClick = props.handleClick;
     let grid = produceGrid(6, handleClick);
     return (
+        <div>
         <Grid stackable columns={3} centered>
             {grid.map(g => g)}
-        </Grid>
+            </Grid>
+        </div>
     )
 }
 
+// the SideBar higher order component will pass the props to the Main Component
 export default SideBar(Main);

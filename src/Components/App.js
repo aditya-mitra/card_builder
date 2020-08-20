@@ -5,15 +5,17 @@ import React from 'react';
 
 import NavBar from './NavBar';
 import Main from './Main';
-import SideBar from './hocs/SideBar';
+import Form from './hocs/Form';
 
-function App() {
+// DO NOT USE THE STORE HERE
+// USE ANOTHER FILE - StoreConnector.js
+
+function App(props) {
     return (
         //<Provider store={store}>
             //<div>
             <div >
-                <NavBar />
-                <br />
+            <NavBar {...props}/>
                 <Main />
 
             </div>
@@ -22,4 +24,4 @@ function App() {
         );
 }
 
-export default App;
+export default Form(App);
