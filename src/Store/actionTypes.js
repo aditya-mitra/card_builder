@@ -1,2 +1,2 @@
-export const ASK_STORIES = 'ASK_STORIES';
-export const TOP_STORIES = 'TOP_STORIES';
+export const GET_ALL = 'GET ALL';
+export const UPDATE_ONE = 'UPDATE ONE CHARACTER';

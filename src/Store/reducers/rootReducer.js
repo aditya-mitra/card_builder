@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
 
-import askStories from './askStories';
-import topStories from './topStories';
+import getAll from './getAll';
 
-const rootReducer = combineReducers({ askStories, topStories });
+const rootReducer = combineReducers({ num: getAll }); // getAll is the name of the reducer and we are changing it's name to num
 
 export default rootReducer;

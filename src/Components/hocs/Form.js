@@ -3,7 +3,7 @@ import { Dimmer, Form } from 'semantic-ui-react';
 import './stylesheets/Form.css';
 
 const showForm =
-    <Form size='huge' widths={35}>
+    <Form size='huge' widths={"equal"}>
         <Form.Group widths={12}>
             <Form.Input
                 label='Name'

@@ -78,7 +78,7 @@ const SidebarExampleSidebar = (WrappedComponent) => {
                             hideBar={this.hideBar}
                         />
                         <Sidebar.Pusher dimmed={dimmed && this.state.visible}>
-                            <WrappedComponent handleClick={this.handleClick} />
+                            <WrappedComponent handleClick={this.handleClick} {...this.props} />
                         </Sidebar.Pusher>
                     </Sidebar.Pushable>
 
