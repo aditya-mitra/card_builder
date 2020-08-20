@@ -31,8 +31,8 @@ router.get('/', function (req, res, next) {
 function insert(character_id, name, next) {
     const query = `INSERT INTO shows (character_id, name)
             VALUES($1, $2)`;
-    pool.query(query, [character_id, name])
-        .then(() => console.info(name, 'was inserted into shows table'))
+    return pool.query(query, [character_id, name])
+        .then(() => name+' was inserted into shows table')
         .catch((err) => next(err));
 }
 

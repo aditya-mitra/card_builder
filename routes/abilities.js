@@ -36,13 +36,17 @@ router.get('/', function (req, res, next) {
 
 function insert(character_id, abilities, next) {
     console.log('\n', character_id, abilities, 'are ready to be inserted');
-    for (let ability of abilities) {
-        query = `INSERT INTO abilities (name, character_id)
-            VALUES($1, $2)`;
-        pool.query(query, [ability, character_id])
-            .then(console.info(ability, ' was inserted into abilities table'))
-            .catch(err => console.error(err));
-    }
+    return new Promise((resolve, reject) => {
+
+        for (let ability of abilities) {
+            query = `INSERT INTO abilities (name, character_id)
+                VALUES($1, $2)`;
+            pool.query(query, [ability, character_id])
+                .then(console.info(ability, ' was inserted into abilities table'))
+                .catch(err => console.error(err));
+        }
+        resolve('done inserting all the abilities');
+    });
 }
 
 function updateAbilities(character_id, abilities, next) {

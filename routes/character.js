@@ -22,7 +22,7 @@ router.get('/presencetest', async (req, res) => {
 
 // helper function
 function sanitize(req) {
-    let { name, abilities, shows } = req.body;
+    let { name, abilities, shows, img } = req.body;
 
     name = name.trim().toLowerCase();
 
@@ -34,9 +34,12 @@ function sanitize(req) {
 
     shows = shows.trim().toLowerCase();
 
+    img = img.trim();
+
     req.body.name = name;
     req.body.abilities = abilities;
     req.body.shows = shows;
+    req.body.img = img;
 }
 
 
@@ -52,36 +55,42 @@ router.get('/', function (req, res, next) {
 
 router.post('/', async function (req, res, next) {
     sanitize(req);
-    let { name, abilities, shows } = req.body;
+    let { name, abilities, shows, img } = req.body;
     let query = `SELECT CURRENT_TIMESTAMP(3)`; // precison is 3
     let current_timestamp = await pool.query(query);
     current_timestamp = current_timestamp.rows[0].current_timestamp;
 
     console.info('Inserting a value into the characters table');
-    query = `INSERT INTO characters (name, createdAt)
-        VALUES($1, $2)
+    query = `INSERT INTO characters (name, createdAt, img)
+        VALUES($1, $2, $3)
         RETURNING *`;
 
-    pool.query(query, [name, current_timestamp])
+    pool.query(query, [name, current_timestamp, img])
         .then(result => result.rows[0].id)
-        .then(character_id => {
-            insertShows(character_id, shows, next);
-            insertAbilities(character_id, abilities, next);
-            return character_id;
+        .then(async character_id => {
+            const cid = await Promise.all([
+                insertShows(character_id, shows, next),
+                insertAbilities(character_id, abilities, next)
+            ])
+                .then(values => console.log(values))
+                .then(() => character_id)
+                .catch((e) => next(e));
+            return cid;
         })
-        .then(character_id => res.redirect('/' + character_id))
+        .then(character_id => res.json({ character_id }))
         .catch(error => next(error));
 
 });
 
 
-function updateCharacter(character_id, name, next) {
+function updateCharacter(character_id, name, img, next) {
 
     const query = `UPDATE characters
-            SET name=($1)
-            WHERE id=($2)`;
+            SET name=($1),
+                img=($2)
+            WHERE id=($3)`;
 
-    return pool.query(query, [name, character_id])
+    return pool.query(query, [name, img, character_id])
         .then(() => console.info('Updated character id :' + character_id + ' successfully'))
         .catch(err => next(err));
 }
@@ -89,7 +98,7 @@ function updateCharacter(character_id, name, next) {
 
 
 // rows in other tables will automatically be deleted becase we have used CASCADE
-function deleteCharacter(character_id) {
+function deleteCharacter(character_id, res) {
     const query = `DELETE FROM characters
                   WHERE id=($1)`;
     pool.query(query, [character_id])
@@ -100,7 +109,7 @@ function deleteCharacter(character_id) {
 
 router.delete('/:id', function (req, res, next) {
     const { id } = req.params;
-    deleteCharacter(id);
+    deleteCharacter(id, res);
 })
 
 exports.character = router;

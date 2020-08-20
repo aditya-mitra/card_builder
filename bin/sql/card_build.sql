@@ -1,5 +1,6 @@
 CREATE TABLE characters(
 	id SERIAL PRIMARY KEY,
+	img TEXT,
 	name VARCHAR(200) UNIQUE NOT NULL,
 	createdAt TIMESTAMP NOT NULL
 );
