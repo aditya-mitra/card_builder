@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\Components",
-    "\\src\\Components\\hocs"
+    "\\src\\Components\\hocs",
+    "\\src\\Components\\stylesheets"
   ],
-  "SelectedNode": "\\src\\Components\\App.js",
+  "SelectedNode": "\\src\\Store",
   "PreviewInSolutionExplorer": false
 }

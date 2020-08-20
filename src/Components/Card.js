@@ -1,9 +1,6 @@
 import React from 'react'
 import { Card, Icon } from 'semantic-ui-react';
 
-import Simple from './hocs/Simple';
-
-
 const extra = (
     <a>
         <Icon name='user' />
@@ -11,17 +8,17 @@ const extra = (
     </a>
 )
 
-const CardExampleCardProps = () => (
+const FullCard = (props) => (
     <Card
-        image='https://vignette.wikia.nocookie.net/characterprofile/images/a/a6/Broly_artwork.png/revision/latest/scale-to-width-down/340?cb=20190515183751'
+        image={props.img}
         link
-        header='Elliot Baker'
-        meta='Friend'
-        description='Elliot is a sound engineer living in Nashville who enjoys playing guitar and hanging with his cat.'
+        header={props.name.toUpperCase()}
+        meta={props.shows}
+        description={props.abilities.toString()}
         extra={extra}
         raised fluid
     />
 
 )
 
-export default CardExampleCardProps;
+export default FullCard;

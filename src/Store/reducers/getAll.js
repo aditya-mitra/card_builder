@@ -1,6 +1,6 @@
 import { GET_ALL } from '../actionTypes';
 
-const initialState = 0;
+const initialState = [];
 
 export default function (state = initialState, action) {
     switch (action.type) {
