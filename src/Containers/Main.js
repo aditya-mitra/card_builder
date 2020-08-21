@@ -25,7 +25,7 @@ function produceGrid(n, handleClick, cards) {
     for (let i = 0; i < n; i++) {
         let column =
             <Grid.Column floated='left' key={cards[i].id} onClick={handleClick} >
-                <BuiltCard {...cards[i]} />
+                <BuiltCard {...cards[i]} key={cards[i].id} />
             </Grid.Column>;
         grid.push(column);
     }
@@ -44,8 +44,16 @@ class Main extends Component {
     render() {
         const { handleClick, cards } = this.props;
         let grid = produceGrid(cards.length, handleClick, cards);
+
+        const inputs = {
+            name: 'last one',
+            abilities: 'hit,shot',
+            shows: 'agent 7',
+            img: 'goimg'
+        }
         return (
-            <div className='container'>
+            <div className='main container'>
+                <Button onClick={() => this.props.doPostOne(inputs)}>CLICK THIS</Button>
                 <Grid stackable columns={3} centered>
                     {grid.map(g => g)}
                 </Grid>

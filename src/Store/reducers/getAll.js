@@ -9,7 +9,6 @@ export default function (state = initialState, action) {
             const newState = action.payload;
             return newState;
         default:
-            console.log('no case matched');
             return state;
     }
 }
