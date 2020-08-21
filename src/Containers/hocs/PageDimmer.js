@@ -1,32 +1,11 @@
 import React from 'react';
-import { Dimmer, Form } from 'semantic-ui-react';
-import './stylesheets/Form.css';
+import { Dimmer } from 'semantic-ui-react';
 
-const showForm =
-    <Form size='huge' widths={"equal"}>
-        <Form.Group widths={12}>
-            <Form.Input
-                label='Name'
-                placeholder='Your Character'
-                name='name'
-            //value={name}
-            //onChange={handleChange}
-            />
-        </Form.Group>
-        <Form.Group widths={12}>
-            <Form.Input
-                label='Abilities'
-                placeholder='The awesome abilities of your character ...'
-                name='abilities'
-            />
-        </Form.Group>
-        <Form.Group widths={12}>
-            <Form.Button content='Submit' fluid />
-        </Form.Group>
-    </Form>;
+import "./PageDimmer.css";
 
+import BuiltForm from '../Form';
 
-const NewForm = WrappedComponent => {
+const PageDimmer = WrappedComponent => {
     class Hoc extends React.Component {
         constructor(props) {
             super(props);
@@ -49,8 +28,8 @@ const NewForm = WrappedComponent => {
                         onClickOutside={this.handleHide}
                         verticalAlign='top'
                     >
-                        <div className='align-middle'>
-                            {showForm}
+                        <div className='builtform container'>
+                            <BuiltForm />
                         </div>
                     </Dimmer>
 
@@ -61,4 +40,4 @@ const NewForm = WrappedComponent => {
     return Hoc;
 }
 
-export default NewForm;
+export default PageDimmer;

@@ -1,24 +1,37 @@
-import React from 'react'
-import { Card, Icon } from 'semantic-ui-react';
+import React from 'react';
 
-const extra = (
-    <a>
-        <Icon name='user' />
-    16 Friends
-    </a>
-)
+import "./Card.css";
 
-const FullCard = (props) => (
-    <Card
-        image={props.img}
-        link
-        header={props.name.toUpperCase()}
-        meta={props.shows}
-        description={props.abilities.toString()}
-        extra={extra}
-        raised fluid
-    />
 
-)
+function randomColour() {
+    const colours = ['red', 'green', 'blue'];
+    const randIndex = Math.floor(Math.random() * 3);
+    return colours[randIndex];
+}
 
-export default FullCard;
+function Card(props) {
+    let { name, shows, abilities, img } = props;
+    abilities = Array.isArray(abilities) ? abilities : abilities.split(',');
+    let listAbilities = [];
+    for (const ability of abilities) {
+        const listAbility =
+            <label className={"class-badge badge-" + randomColour()}>{ability}</label>
+        listAbilities.push(listAbility);
+    }
+    return (
+        <div className={"character-card-v2 card-"+randomColour()}>
+            <div className="portrait" style={{ backgroundImage: 'url(' + img + ')' }}>
+            </div>
+            <div className="details">
+                <div className="names">
+                    <div className="glitch" data-text={name}>{name}</div>
+                    <small>{shows}</small>
+                </div>
+                <div className="classes">
+                    {listAbilities}
+                </div>
+            </div>
+        </div>);
+}
+
+export default Card;

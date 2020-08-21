@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { Grid, Button } from 'semantic-ui-react';
+import { Grid, Button, Card } from 'semantic-ui-react';
 import './stylesheets/Main.css';
 
 import * as actions from '../Store/actions/actionCreators';
 
-import Card from './Card';
+import BuiltCard from '../Components/Card';
 import SideBar from './hocs/SideBar';
 
 
@@ -25,7 +25,7 @@ function produceGrid(n, handleClick, cards) {
     for (let i = 0; i < n; i++) {
         let column =
             <Grid.Column floated='left' key={cards[i].id} onClick={handleClick} >
-                <Card {...cards[i]}/>
+                <BuiltCard {...cards[i]} />
             </Grid.Column>;
         grid.push(column);
     }
