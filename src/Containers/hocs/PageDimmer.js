@@ -29,7 +29,7 @@ const PageDimmer = WrappedComponent => {
                         verticalAlign='top'
                     >
                         <div className='builtform container'>
-                            <BuiltForm />
+                            <BuiltForm hideForm={this.handleHide} />
                         </div>
                     </Dimmer>
 

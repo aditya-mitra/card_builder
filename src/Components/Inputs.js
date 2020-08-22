@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Button, Popup } from 'semantic-ui-react';
+import { Form, Button, Popup, Loader } from 'semantic-ui-react';
 
 class Inputs extends Component {
 	constructor(props) {
@@ -60,7 +60,11 @@ class Inputs extends Component {
 						</Popup.Content>
 					</Popup>
 				</Form.Group>
-				<Button inverted color='green' type='submit'>Submit</Button>
+				<Button loading={this.props.loading}
+					color='green' inverted
+					type='submit'>
+					Submit
+				</Button>
 			</Form>
 		);
 

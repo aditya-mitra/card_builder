@@ -1,5 +1,5 @@
 import { getAll } from '../../Services/apiCalls';
-import { GET_ALL, UPDATE_ONE } from '../actionTypes';
+import { GET_ALL } from '../actionTypes';
 
 export default function doGetAll() {
     return (dispatch, getState) => { // we are returning a function

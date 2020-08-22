@@ -11,13 +11,11 @@ import store from '../Store/store';
 function App(props) {
     //store.dispatch({ type: 'GET ALL', payload: 200 });
     return (
-        <Provider store={store}>
-            <div >
-                <NavBar {...props}/>
-                <Main />
-            </div>
-        </Provider>
-        );
+        <div >
+            <NavBar {...props} />
+            <Main />
+        </div>
+    );
 }
 
 export default Form(App);
