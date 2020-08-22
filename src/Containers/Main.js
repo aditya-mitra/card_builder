@@ -46,7 +46,7 @@ class Main extends Component {
         return (
             <div className='main container'>
                 
-                <Grid stackable columns={3} centered>
+                <Grid stackable columns={3} celled='internally'>
                     {grid.map(g => g)}
                 </Grid>
             </div>
