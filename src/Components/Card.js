@@ -24,7 +24,7 @@ function Card(props) {
             </div>
             <div className="details">
                 <div className="names">
-                    <div className="glitch" data-text={name}>{name}</div>
+                    <div className="bigname"><div className="textinside">{name}</div></div>
                     <small>{shows}</small>
                 </div>
                 <div className="classes">

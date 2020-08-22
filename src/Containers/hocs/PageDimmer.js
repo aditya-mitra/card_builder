@@ -9,7 +9,7 @@ const PageDimmer = WrappedComponent => {
     class Hoc extends React.Component {
         constructor(props) {
             super(props);
-            this.state = { active: true };
+            this.state = { active: false };
             this.handleShow = this.handleShow.bind(this);
             this.handleHide = this.handleHide.bind(this);
         }
