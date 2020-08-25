@@ -6,6 +6,7 @@ export default function doUpdateOne(cid, updates) {
     return (dispatch, getState) => {
         const cards = getState().cards;
         let updatedCards = [];
+        console.info('The updated Card is', updates);
         for (const card of cards) {
             if (card.id === cid) {
                 let updatedCard = {

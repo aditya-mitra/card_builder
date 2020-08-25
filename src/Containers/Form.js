@@ -49,7 +49,6 @@ class BuiltForm extends Component {
     }
 
     async handleSubmit() {
-        console.log('submitting data now', this.state);
         this.setState({ loading: true });
         let inputs = { ...this.state };
         // remove the unnecessary fields
@@ -57,9 +56,9 @@ class BuiltForm extends Component {
         delete inputs['loading'];
 
         let m;
-        if (this.props.edit !== false) m = await updateOne(inputs, this.props.cid);
+        if (this.props.edit !== false) m = await updateOne(inputs, this.props.edit.card.id);
         else m = await postOne(inputs);
-
+        console.log('we have m as', m);
         if (m.status === 0) this.setState({ loading: false, err: m.message });
         else if (m.status === 1 && this.props.edit === false) {
             await new Promise(resolve => setTimeout(resolve, 1500)); // needs at least 1 second to put the character in the database
@@ -70,7 +69,7 @@ class BuiltForm extends Component {
                 name: '', shows: '', img: '', abilities: '', err: '', loading: false
             });
         } else if (m.status === 1 && this.props.edit !== false) {
-            this.props.doUpdateOne(this.props.cid, m.character);
+            this.props.doUpdateOne(this.props.edit.card.id, m.character);
 
             this.props.hideForm();
             this.setState({

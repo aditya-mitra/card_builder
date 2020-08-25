@@ -34,6 +34,8 @@ export function getOne(id) {
 export async function updateOne(inputs, cid) {
 
     let err = null;
+    console.log('before', inputs);
+    //console.log('after', inputs);
     const response = await axios({
         method: 'PUT',
         url: BASE_URL + cid,
@@ -41,16 +43,16 @@ export async function updateOne(inputs, cid) {
     })
         .catch(e => err = e);
 
-
     if (err || !response) {
         console.log(err, 'got this error');
         return { status: 0, message: "Please check your network connectivity!" };
     }
-    const { data } = response;
+    const data = response.data;
     if ('code' in data)
         return { status: 0, message: "Oops! Something went wrong while submitting your Character. Error Code : " + data.code };
 
-    return { status: 1, character: data[0] ,message: "Your character was updated!" };
+    console.log('we have the response as', response, 'and data as', data);
+    return { status: 1, character: data[0] , message: "Your character was updated!" };
 }
 
 const obj = {
@@ -61,4 +63,4 @@ const obj = {
     "id": 11
 };
 
-updateOne(obj, 11);
+//updateOne(obj, 11);

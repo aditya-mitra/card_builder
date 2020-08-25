@@ -1,4 +1,4 @@
-import { GET_ALL } from '../actionTypes';
+import { GET_ALL, UPDATE_ONE } from '../actionTypes';
 
 const initialState = []; // acts as placeholder
 
@@ -7,6 +7,9 @@ export default function (state = initialState, action) {
         case GET_ALL:
             const newState = action.payload;
             return newState;
+        case UPDATE_ONE:
+            const updatedCards = action.payload;
+            return updatedCards;
         default:
             return state;
     }
