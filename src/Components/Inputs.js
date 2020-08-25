@@ -61,6 +61,7 @@ class Inputs extends Component {
 					</Popup>
 				</Form.Group>
 				<Button loading={this.props.loading}
+					disabled={this.props.loading}
 					color='green' inverted
 					type='submit'>
 					Submit

@@ -3,8 +3,11 @@
     "",
     "\\src",
     "\\src\\Components",
-    "\\src\\Services"
+    "\\src\\Containers",
+    "\\src\\Store",
+    "\\src\\Store\\actions",
+    "\\src\\Store\\reducers"
   ],
-  "SelectedNode": "\\src\\Components\\Card.css",
+  "SelectedNode": "\\src\\Containers\\Main.js",
   "PreviewInSolutionExplorer": false
 }

@@ -4,11 +4,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../Store/actions/actionCreators';
 
-import { Segment, Grid, Message, Icon, Dimmer } from 'semantic-ui-react';
+import { Segment, Grid, Message, Icon } from 'semantic-ui-react';
 import Card from '../Components/Card';
 import Inputs from '../Components/Inputs';
 
-import { postOne } from '../Services/apiCalls';
+import { postOne, updateOne } from '../Services/apiCalls';
 
 
 // functions for store subscriptions
@@ -28,10 +28,9 @@ class BuiltForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDismiss = this.handleDismiss.bind(this);
 
-        const { status } = this.props;
-        if (status === 'edit') {
-            this.state = { ...this.props, err: '' };
-            delete this.state[status];
+        if ('cid' in this.props) {
+            this.state = { ...this.props, err: '', loading: false };
+            delete this.state['cid'];
         } else {
             // status is new 
             this.state = {
@@ -53,18 +52,29 @@ class BuiltForm extends Component {
         console.log('submitting data now', this.state);
         this.setState({ loading: true });
         let inputs = { ...this.state };
-        delete inputs['err']; // remove the unnecessary fields
+        // remove the unnecessary fields
+        delete inputs['err']; 
         delete inputs['loading'];
 
-        const m = await postOne(inputs);
+        let m;
+        if ('cid' in this.props) m = await updateOne(inputs, this.props.cid);
+        else m = await postOne(inputs);
 
         if (m.status === 0) this.setState({ loading: false, err: m.message });
-        if (m.status === 1) {
-            await new Promise(resolve => setTimeout(resolve, 1500)); // needs at least 1 second to get the character
+        else if (m.status === 1 && !('cid' in this.props)) {
+            await new Promise(resolve => setTimeout(resolve, 1500)); // needs at least 1 second to put the character in the database
             this.props.doPutOne(m.character_id);
+
             this.props.hideForm();
             this.setState({
-                name: '', shows: '', img: '', abilities: '', err: ''
+                name: '', shows: '', img: '', abilities: '', err: '', loading: false
+            });
+        } else if (m.status === 1 && 'cid' in this.props) {
+            this.props.doUpdateOne(this.props.cid, m.character);
+
+            this.props.hideForm();
+            this.setState({
+                name: '', shows: '', img: '', abilities: '', err: '', loading: false
             });
         }
     }
