@@ -9,7 +9,7 @@ function App(props) {
     return (
         <div >
             <NavBar {...props} />
-            <Main />
+            <Main {...props}/>
         </div>
     );
 }

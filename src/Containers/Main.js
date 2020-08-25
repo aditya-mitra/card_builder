@@ -19,12 +19,12 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators(actions, dispatch);
 }
 
-function produceGrid(n, handleClick, cards) {
+function produceGrid(n, handleClick, cards, handleShow) {
     let grid = [];
     for (let i = 0; i < n; i++) {
         let column =
             <Grid.Column floated='left' key={cards[i].id} onClick={handleClick} >
-                <BuiltCard {...cards[i]} key={cards[i].id} />
+                <BuiltCard {...cards[i]} handleShow={handleShow} key={cards[i].id} />
             </Grid.Column>;
         grid.push(column);
     }
@@ -41,8 +41,8 @@ class Main extends Component {
     }
 
     render() {
-        const { handleClick, cards } = this.props;
-        let grid = produceGrid(cards.length, handleClick, cards);
+        const { handleClick, cards, handleShow } = this.props;
+        let grid = produceGrid(cards.length, handleClick, cards, handleShow);
         return (
             <div className='main container'>
                 

@@ -32,23 +32,22 @@ export function getOne(id) {
 }
 
 export async function updateOne(inputs, cid) {
+
     let err = null;
     const response = await axios({
         method: 'PUT',
         url: BASE_URL + cid,
-        data: inputs
-    }).catch(e => err = e);
+        data: inputs,
+    })
+        .catch(e => err = e);
 
-    const data = response.data;
 
-
-    return;
-    console.log('the inputs are', inputs, 'and the response is', response);
     if (err || !response) {
         console.log(err, 'got this error');
         return { status: 0, message: "Please check your network connectivity!" };
     }
-    else if ('code' in data)
+    const { data } = response;
+    if ('code' in data)
         return { status: 0, message: "Oops! Something went wrong while submitting your Character. Error Code : " + data.code };
 
     return { status: 1, character: data[0] ,message: "Your character was updated!" };

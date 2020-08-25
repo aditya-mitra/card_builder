@@ -26,18 +26,22 @@ function randomColour() {
 function Card(props) {
     let { name, shows, abilities, img, id } = props;
     abilities = Array.isArray(abilities) ? abilities : abilities.split(',');
+
     let listAbilities = [], counter = 0;
     for (const ability of abilities) {
         const listAbility =
             <label key={counter++} className={"class-badge badge-" + randomColour()}>{ability}</label>
         listAbilities.push(listAbility);
     }
+
     return (
         <div className={"character-card-v2 card-" + randomColour()}>
             <div className="portrait" style={{ backgroundImage: 'url(' + img + ')' }}>
             </div>
             <div className="details">
-                <span onClick={() => props.doEdit({ name, shows, abilities, img, id }) }><Icon link name='pencil alternate' style={{ float: 'right' }} inverted /></span>
+                <span onClick={() => { props.doEdit({ name, shows, abilities, img, id }); props.handleShow(); }}>
+                    <Icon link name='pencil alternate' style={{ float: 'right' }} inverted size='large' />
+                </span>
                 <div className="names">
                     <div className="glitch-wrapper">
                         <div className="glitch" data-text={name}>{name}
