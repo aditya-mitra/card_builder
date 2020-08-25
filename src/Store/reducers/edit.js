@@ -1,12 +1,11 @@
 import { EDIT } from '../actionTypes';
 
-const initialState = { edit: false };
+const initialState = false;
 
 export default function (state = initialState, action) {
     switch (action.type) {
         case EDIT:
-            const edit = { cid: action.payload }; // if edit !== false;
-            return { ...state, edit };
+            return { ...state, card: action.payload }; // if edit !== false
         default:
             return state;
     }

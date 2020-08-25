@@ -37,7 +37,7 @@ function Card(props) {
             <div className="portrait" style={{ backgroundImage: 'url(' + img + ')' }}>
             </div>
             <div className="details">
-                <span onClick={ () => props.doEdit(id) }><Icon link name='pencil alternate' style={{ float: 'right' }} inverted /></span>
+                <span onClick={() => props.doEdit({ name, shows, abilities, img, id }) }><Icon link name='pencil alternate' style={{ float: 'right' }} inverted /></span>
                 <div className="names">
                     <div className="glitch-wrapper">
                         <div className="glitch" data-text={name}>{name}

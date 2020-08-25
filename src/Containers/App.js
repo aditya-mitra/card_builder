@@ -2,7 +2,7 @@ import React from 'react';
 
 import NavBar from './NavBar';
 import Main from './Main';
-import Form from './hocs/PageDimmer';
+import PageDimmer from './hocs/PageDimmer';
 
 function App(props) {
     //store.dispatch({ type: 'GET ALL', payload: 200 });
@@ -14,4 +14,4 @@ function App(props) {
     );
 }
 
-export default Form(App);
+export default PageDimmer(App);

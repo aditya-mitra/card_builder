@@ -28,19 +28,19 @@ class BuiltForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDismiss = this.handleDismiss.bind(this);
 
-        if ('cid' in this.props) {
-            this.state = { ...this.props, err: '', loading: false };
-            delete this.state['cid'];
-        } else {
-            // status is new 
-            this.state = {
-                name: '',
-                shows: '',
-                img: '',
-                abilities: '',
-                err: '',
-                loading: false
-            }
+        this.state = {
+            name: '',
+            shows: '',
+            img: '',
+            abilities: '',
+            err: '',
+            loading: false
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.edit !== prevProps.edit) {
+            this.setState({ ...this.props.edit.card });
         }
     }
 
@@ -57,11 +57,11 @@ class BuiltForm extends Component {
         delete inputs['loading'];
 
         let m;
-        if ('cid' in this.props) m = await updateOne(inputs, this.props.cid);
+        if (this.props.edit !== false) m = await updateOne(inputs, this.props.cid);
         else m = await postOne(inputs);
 
         if (m.status === 0) this.setState({ loading: false, err: m.message });
-        else if (m.status === 1 && !('cid' in this.props)) {
+        else if (m.status === 1 && this.props.edit === false) {
             await new Promise(resolve => setTimeout(resolve, 1500)); // needs at least 1 second to put the character in the database
             this.props.doPutOne(m.character_id);
 
@@ -69,7 +69,7 @@ class BuiltForm extends Component {
             this.setState({
                 name: '', shows: '', img: '', abilities: '', err: '', loading: false
             });
-        } else if (m.status === 1 && 'cid' in this.props) {
+        } else if (m.status === 1 && this.props.edit !== false) {
             this.props.doUpdateOne(this.props.cid, m.character);
 
             this.props.hideForm();

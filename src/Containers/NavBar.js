@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input, Menu, Search, Button, Icon } from 'semantic-ui-react'
+import { Menu, Search, Button, Icon } from 'semantic-ui-react'
 
 class NavBar extends Component {
     constructor(props) {
@@ -10,7 +10,7 @@ class NavBar extends Component {
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
     render() {
-        const { activeItem } = this.state
+        const { activeItem } = this.state;
         return (
             <Menu inverted stackable>
                 <Menu.Item
