@@ -2,12 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\Components",
     "\\src\\Containers",
+    "\\src\\Services",
     "\\src\\Store",
     "\\src\\Store\\actions",
     "\\src\\Store\\reducers"
   ],
-  "SelectedNode": "\\src\\Containers\\Main.js",
+  "SelectedNode": "\\src\\Store\\reducers\\rootReducer.js",
   "PreviewInSolutionExplorer": false
 }
