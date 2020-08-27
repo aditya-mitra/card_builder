@@ -30,6 +30,12 @@ class SearchBar extends Component {
     handleSearchChange(event, data) {
         const { value } = data;
         this.setState({ value, loading: true });
+        if (!value || value === '') {
+            clearTimeout(this.timer);
+            this.props.doClearSearch();
+            this.setState({ loading: false });
+            return;
+        }
 
         const { cards } = this.props;
 
@@ -42,7 +48,7 @@ class SearchBar extends Component {
         this.timer = setTimeout(()=> {
             this.props.doFilterCards([...items]);
             this.setState({ loading: false });
-        }, 500); // we will be dispatching after delay, otherwise the search typing will be slow
+        }, 300); // we will be dispatching after delay, otherwise the search typing will be slow
 
         const searchResults = items.map(item => {
             return {
@@ -56,12 +62,19 @@ class SearchBar extends Component {
     }
 
     handleResultSelect(event, data) {
-        this.setState({ value: data.result.title });
+        const value = data.result.title;
+        this.setState({ value, loading: false });
+        const { cards } = this.props;
+        const items = cards.filter(card =>
+            card["name"].includes(value.toLowerCase()) ||
+            card["shows"].includes(value.toLowerCase())
+        );
+        this.props.doFilterCards([...items]);
     }
 
     render() {
         return (
-            <Search fluid
+            <Search fluid size='big'
                 loading={this.state.loading}
                 value={this.state.value}
                 results={this.state.results}

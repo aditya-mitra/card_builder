@@ -1,7 +1,5 @@
-import doGetAll from './doGetAll';
-import doPutOne from './doPutOne';
-import doUpdateOne from './doUpdateOne';
+import {doGetAll, doPutOne, doUpdateOne } from './doCards';
 import doEdit from './doEdit';
-import { doFilterCards, doClearSearch } from './doFilterCards';
+import { doFilterCards, doClearSearch } from './doSearch';
 
 export { doGetAll, doPutOne, doUpdateOne, doEdit, doFilterCards, doClearSearch };

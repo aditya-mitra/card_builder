@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
-import { Menu, Button, Icon } from 'semantic-ui-react';
+import { Menu, Button, Icon, Header } from 'semantic-ui-react';
 
 import SearchBar from '../Components/SearchBar';
 
 class NavBar extends Component {
-    state = { activeItem: 'home' }
-
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-
     render() {
-        const { activeItem } = this.state;
         return (
             <Menu inverted stackable>
                 <Menu.Item
                     name='home'
-                    active={activeItem === 'home'}
-                    onClick={this.handleItemClick}
-                />
+                    active='true'
+                >
+                    <Header>CARD BUILDER</Header>
+                </Menu.Item>
                 <Menu.Menu position='right'>
                     <Menu.Item>
                         <Button animated='fade' inverted onClick={this.props.handleShow}>
