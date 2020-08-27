@@ -5,7 +5,7 @@ const initialState = false;
 export default function (state = initialState, action) {
     switch (action.type) {
         case EDIT:
-            return { ...state, card: action.payload }; // if edit !== false
+            return { card: action.payload }; // if edit !== false
         default:
             return state;
     }

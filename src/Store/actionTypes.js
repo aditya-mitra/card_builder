@@ -1,6 +1,10 @@
 export const GET_ALL = 'GET ALL';
 export const PUT_ONE = 'PUT ONE CHARACTER';
 export const UPDATE_ONE = 'UPDATE THE CHARACTER';
+
+export const UPDATE_SELECTION = 'UPDATE THE GRID ON FILTERED CARDS';
+export const CLEAR_SEARCH = 'CLEAR SEARCH AND SHOW ALL THE CARDS';
+
 export const EDIT = 'EDIT ONE CARD';
 
 export const ERR = 'AN ERROR OCCURRED';
