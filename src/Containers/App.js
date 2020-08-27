@@ -8,7 +8,7 @@ function App(props) {
     //store.dispatch({ type: 'GET ALL', payload: 200 });
     return (
         <div >
-            <NavBar {...props} />
+            <NavBar {...props}/>
             <Main {...props}/>
         </div>
     );

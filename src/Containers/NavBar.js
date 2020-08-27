@@ -1,13 +1,13 @@
-import React, { Component } from 'react'
-import { Menu, Search, Button, Icon } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Menu, Button, Icon } from 'semantic-ui-react';
+
+import SearchBar from '../Components/SearchBar';
 
 class NavBar extends Component {
-    constructor(props) {
-        super(props);
-    }
     state = { activeItem: 'home' }
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
 
     render() {
         const { activeItem } = this.state;
@@ -26,7 +26,7 @@ class NavBar extends Component {
                         </Button>
                     </Menu.Item>
                     <Menu.Item>
-                        <Search category fluid />
+                        <SearchBar />
                     </Menu.Item>
                 </Menu.Menu>
             </Menu>

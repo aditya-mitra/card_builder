@@ -58,10 +58,15 @@ class BuiltForm extends Component {
         let m;
         if (this.props.edit !== false) m = await updateOne(inputs, this.props.edit.card.id);
         else m = await postOne(inputs);
+
         console.log('we have m as', m);
+
         if (m.status === 0) this.setState({ loading: false, err: m.message });
         else if (m.status === 1 && this.props.edit === false) {
-            await new Promise(resolve => setTimeout(resolve, 1500)); // needs at least 1 second to put the character in the database
+
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            // needs at least 1 second to put the character in the database
+
             this.props.doPutOne(m.character_id);
 
             this.props.hideForm();
@@ -69,6 +74,7 @@ class BuiltForm extends Component {
                 name: '', shows: '', img: '', abilities: '', err: '', loading: false
             });
         } else if (m.status === 1 && this.props.edit !== false) {
+
             this.props.doUpdateOne(this.props.edit.card.id, m.character);
 
             this.props.hideForm();

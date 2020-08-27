@@ -32,11 +32,8 @@ function produceGrid(n, handleClick, cards, handleShow) {
 }
 
 class Main extends Component {
-    constructor(props) {
-        super(props);
 
-    }
-    componentWillMount() {
+    componentDidMount() {
         this.props.doGetAll();
     }
 
@@ -45,7 +42,6 @@ class Main extends Component {
         let grid = produceGrid(cards.length, handleClick, cards, handleShow);
         return (
             <div className='main container'>
-                
                 <Grid stackable columns={3} celled='internally'>
                     {grid.map(g => g)}
                 </Grid>

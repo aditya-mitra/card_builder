@@ -13,7 +13,6 @@
     border: 3px solid #c1beb4;
     border-radius: 10px;
     display: inline-block;
-    cursor: pointer;
     width: 375px;
     transition: all .2s ease;
 }

@@ -54,13 +54,3 @@ export async function updateOne(inputs, cid) {
     console.log('we have the response as', response, 'and data as', data);
     return { status: 1, character: data[0] , message: "Your character was updated!" };
 }
-
-const obj = {
-    "name": "vision",
-    "shows": "avengers",
-    "img": "https://i.insider.com/5ae205a2bd967119008b4592?width=1100&format=jpeg&auto=webp",
-    "abilities": "mind stone, hero",
-    "id": 11
-};
-
-//updateOne(obj, 11);

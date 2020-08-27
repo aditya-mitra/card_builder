@@ -8,6 +8,6 @@
     "\\src\\Store\\actions",
     "\\src\\Store\\reducers"
   ],
-  "SelectedNode": "\\src\\Store\\reducers\\rootReducer.js",
+  "SelectedNode": "\\src\\Store\\reducers\\cards.js",
   "PreviewInSolutionExplorer": false
 }
