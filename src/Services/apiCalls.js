@@ -3,7 +3,7 @@ import axios from 'axios';
 // "https://cardbuilderv1.herokuapp.com/"
 // "http://localhost:9000/"
 // "https://cardbuilderv2.herokuapp.com/";
-const BASE_URL = "https://cardbuilderv2.herokuapp.com/";
+const BASE_URL = "http://localhost:9000/";
 
 export function getAll() {
     return axios.get(BASE_URL);

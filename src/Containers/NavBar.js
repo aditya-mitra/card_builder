@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Menu, Button, Icon, Header, Checkbox, Label } from 'semantic-ui-react';
+import { Menu, Button, Icon, Checkbox, Label, Image } from 'semantic-ui-react';
 
+import logo from '../assets/logo.png';
 import "./stylesheets/NavBar.css";
 import SearchBar from '../Components/SearchBar';
 
@@ -27,6 +28,9 @@ class NavBar extends Component {
         const { darkmode } = this.state;
         return (
             <Menu stackable inverted={darkmode} >
+                <Menu.Item>
+                    <Image src={logo} size='small' rounded />
+                </Menu.Item>
                 <Menu.Item
                 >
                     <Label color={darkmode ? 'violet' : 'blue'} horizontal>
