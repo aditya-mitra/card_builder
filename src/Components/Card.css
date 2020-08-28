@@ -1,4 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Comfortaa:wght@300&family=Shojumaru&display=swap');
+@font-face {
+    font-family: 'Bangers';
+    src: url('../assets/Bangers.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('../assets/Comfortaa.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Shojumaru';
+    src: url('../assets/Shojumaru.ttf') format('truetype');
+}
 
 /*     font-family: 'Bangers', cursive;
 
@@ -24,8 +37,6 @@
     }
 
 
-
-
     .character-card-v2 .portrait {
         height: 400px;
         width: 100%;
@@ -33,7 +44,7 @@
         border-radius: calc(10px - 3px);
         text-align: center;
         overflow: hidden;
-        background-image: url("https://i.pinimg.com/736x/e3/3c/2f/e33c2fa94c03efa06678116f80d62d0d.jpg");
+/*        background-image: url("https://i.pinimg.com/736x/e3/3c/2f/e33c2fa94c03efa06678116f80d62d0d.jpg");*/
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 50% 10%;

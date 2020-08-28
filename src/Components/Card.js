@@ -1,5 +1,6 @@
 import React from 'react';
 
+import fallbackImage from '../assets/fallback.jpg';
 import "./Card.css";
 import { Icon, Label } from 'semantic-ui-react';
 
@@ -36,7 +37,7 @@ function Card(props) {
 
     return (
         <div className={"character-card-v2 card-" + randomColour()}>
-            <div className="portrait" style={{ backgroundImage: 'url(' + img + ')' }}>
+            <div className="portrait" style={{ backgroundImage: 'url(' + img + "), url(" + fallbackImage +")" }}>
             </div>
             <div className="details">
                 <Label style={{ float: 'right', cursor:'pointer', color: 'white', background: 'black' }} size='mini' onClick={() => { props.doEdit({ name, shows, abilities, img, id }); props.handleShow(); }}>
