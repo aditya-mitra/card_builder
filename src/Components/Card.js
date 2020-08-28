@@ -39,17 +39,14 @@ function Card(props) {
             <div className="portrait" style={{ backgroundImage: 'url(' + img + ')' }}>
             </div>
             <div className="details">
-                <span onClick={() => { props.doEdit({ name, shows, abilities, img, id }); props.handleShow(); }}>
-                    <Label style={{ float: 'right', color:'white', background:'black' }} size='mini'>
-                        <Icon link name='pencil alternate' inverted size='large' /> Edit
-                    </Label>
-                </span>
+                <Label style={{ float: 'right', cursor:'pointer', color: 'white', background: 'black' }} size='mini' onClick={() => { props.doEdit({ name, shows, abilities, img, id }); props.handleShow(); }}>
+                    <Icon name='pencil alternate' inverted size='large' /> Edit
+                </Label>
                 <div className="names">
                     <div className="glitch-wrapper">
                         <div className="glitch" data-text={name}>{name}
                         </div>
                     </div>
-                        
                     <small>{shows}</small>
                 </div>
                 <div className="classes">

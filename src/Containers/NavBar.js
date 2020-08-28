@@ -1,20 +1,42 @@
 import React, { Component } from 'react';
-import { Menu, Button, Icon, Header } from 'semantic-ui-react';
+import { Menu, Button, Icon, Header, Checkbox, Label } from 'semantic-ui-react';
 
+import "./stylesheets/NavBar.css";
 import SearchBar from '../Components/SearchBar';
 
 class NavBar extends Component {
+    state = { darkmode: true };
+    componentDidMount() {
+        if (this.state.darkmode) {
+            document.body.setAttribute('data-theme', 'dark');
+        }
+    }
+    handleClick() {
+        this.setState(function (prevState) {
+            return { darkmode: !prevState.darkmode };
+        })
+        if (!this.state.darkmode) {
+            document.body.setAttribute('data-theme', 'dark');
+        }
+        else {
+            document.body.removeAttribute('data-theme', 'dark');
+        }
+    }
+    
     render() {
+        const { darkmode } = this.state;
         return (
-            <Menu inverted stackable>
+            <Menu stackable inverted={darkmode} >
                 <Menu.Item
-                    name='home'
                 >
-                    <Header>CARD BUILDER</Header>
+                    <Label color={darkmode ? 'violet' : 'blue'} horizontal>
+                        {darkmode ? "Dark Mode" : "Light Mode"}
+                    </Label>
+                    <Checkbox slider onClick={() => this.handleClick.call(this)} className='darkmode-slider' defaultChecked />
                 </Menu.Item>
                 <Menu.Menu position='right'>
                     <Menu.Item>
-                        <Button animated='fade' inverted onClick={this.props.handleShow}>
+                        <Button animated='fade' inverted={darkmode} onClick={this.props.handleShow}>
                             <Button.Content visible>Create New</Button.Content>
                             <Button.Content hidden ><Icon name='plus' /></Button.Content>
                         </Button>

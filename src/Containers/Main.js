@@ -8,7 +8,6 @@ import './stylesheets/Main.css';
 import * as actions from '../Store/actions/actionCreators';
 
 import BuiltCard from '../Components/Card';
-import SideBar from './hocs/SideBar';
 
 
 // helper functions
@@ -65,5 +64,4 @@ class Main extends Component {
 
 const ConnectedMain = connect(mapStateToProps, mapDispatchToProps)(Main);
 
-// the SideBar higher order component will pass the props to the Main Component
 export default ConnectedMain;
