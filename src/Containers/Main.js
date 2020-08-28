@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { Grid, Button, Divider } from 'semantic-ui-react';
 import './stylesheets/Main.css';
+import { Grid, Button, Divider } from 'semantic-ui-react';
 
 import * as actions from '../Store/actions/actionCreators';
 
@@ -37,24 +37,7 @@ function produceGrid(n, handleClick, cards, handleShow) {
 
 const loader = (
     <div className="loader-container">
-        <div className="spinner-box">
-            <div className="blue-orbit leo">
-            </div>
-
-            <div className="green-orbit leo">
-            </div>
-
-            <div className="red-orbit leo">
-            </div>
-
-            <div className="white-orbit w1 leo">
-            </div><div className="white-orbit w2 leo">
-            </div><div className="white-orbit w3 leo">
-            </div>
-        </div>
-        <div>
-            <h1>Loading ...</h1>
-        </div>
+        <div className="loader loader10" />
     </div>
 );
 
