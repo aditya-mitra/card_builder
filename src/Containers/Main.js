@@ -35,14 +35,48 @@ function produceGrid(n, handleClick, cards, handleShow) {
     return grid;
 }
 
+const loader = (
+    <div className="loader-container">
+        <div className="spinner-box">
+            <div className="blue-orbit leo">
+            </div>
+
+            <div className="green-orbit leo">
+            </div>
+
+            <div className="red-orbit leo">
+            </div>
+
+            <div className="white-orbit w1 leo">
+            </div><div className="white-orbit w2 leo">
+            </div><div className="white-orbit w3 leo">
+            </div>
+        </div>
+        <div>
+            <h1>Loading ...</h1>
+        </div>
+    </div>
+);
+
 class Main extends Component {
+
+    state = { loading: true };
 
     componentDidMount() {
         this.props.doGetAll();
+        if (this.props.cards.length > 0) {
+            this.setState({ loading: false });
+        }
+
     }
 
     render() {
         const { handleClick, cards, filteredCards, handleShow } = this.props;
+
+
+        if (this.state.loading && cards.length === 0) {
+            return loader;
+        }
 
         const trueCards = (filteredCards.length > 0) ? filteredCards : cards;
         const grid = produceGrid(trueCards.length, handleClick, trueCards, handleShow);
