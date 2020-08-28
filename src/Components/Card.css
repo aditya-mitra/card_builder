@@ -35,9 +35,9 @@
         overflow: hidden;
         background-image: url("https://i.pinimg.com/736x/e3/3c/2f/e33c2fa94c03efa06678116f80d62d0d.jpg");
         background-repeat: no-repeat;
-        background-attachment: fixed;
         background-size: cover;
         background-position: 50% 10%;
+        object-fit:cover;
     }
 
 

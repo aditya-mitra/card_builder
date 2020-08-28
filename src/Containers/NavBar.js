@@ -9,7 +9,6 @@ class NavBar extends Component {
             <Menu inverted stackable>
                 <Menu.Item
                     name='home'
-                    active='true'
                 >
                     <Header>CARD BUILDER</Header>
                 </Menu.Item>

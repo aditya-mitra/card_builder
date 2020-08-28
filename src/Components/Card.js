@@ -1,7 +1,7 @@
 import React from 'react';
 
 import "./Card.css";
-import { Icon } from 'semantic-ui-react';
+import { Icon, Label } from 'semantic-ui-react';
 
 
 import { bindActionCreators } from 'redux';
@@ -40,7 +40,9 @@ function Card(props) {
             </div>
             <div className="details">
                 <span onClick={() => { props.doEdit({ name, shows, abilities, img, id }); props.handleShow(); }}>
-                    <Icon link name='pencil alternate' style={{ float: 'right' }} inverted size='large' />
+                    <Label style={{ float: 'right', color:'white', background:'black' }} size='mini'>
+                        <Icon link name='pencil alternate' inverted size='large' /> Edit
+                    </Label>
                 </span>
                 <div className="names">
                     <div className="glitch-wrapper">

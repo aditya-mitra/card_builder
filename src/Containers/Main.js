@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { Grid, Button, Segment, Divider } from 'semantic-ui-react';
+import { Grid, Button, Divider } from 'semantic-ui-react';
 import './stylesheets/Main.css';
 
 import * as actions from '../Store/actions/actionCreators';
@@ -25,7 +25,7 @@ function produceGrid(n, handleClick, cards, handleShow) {
         let row = [];
         for (let j = i; j < i+3 && j < n; j++) {
             let column =
-                <Grid.Column floated='left' key={cards[j].id} onClick={handleClick} >
+                <Grid.Column key={cards[j].id} onClick={handleClick} >
                     <BuiltCard {...cards[j]} handleShow={handleShow} key={cards[j].id} />
                 </Grid.Column>;
             row.push(column);
@@ -66,4 +66,4 @@ class Main extends Component {
 const ConnectedMain = connect(mapStateToProps, mapDispatchToProps)(Main);
 
 // the SideBar higher order component will pass the props to the Main Component
-export default SideBar(ConnectedMain);
+export default ConnectedMain;
