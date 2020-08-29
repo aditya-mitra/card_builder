@@ -40,7 +40,7 @@ function Card(props) {
             <div className="portrait" style={{ backgroundImage: 'url(' + img + "), url(" + fallbackImage +")" }}>
             </div>
             <div className="details">
-                <Label style={{ float: 'right', cursor:'pointer', color: 'white', background: 'black' }} size='mini' onClick={() => { props.doEdit({ name, shows, abilities, img, id }); props.handleShow(); }}>
+                <Label style={{ float: 'right', cursor: 'pointer', color: 'white', background: 'black' }} size='mini' onClick={() => { props.doEdit({ name, shows, abilities, img, id }); props.handleShow(); window.scrollTo({ top: '10rem', behavior:'smooth' }) }}>
                     <Icon name='pencil alternate' inverted size='large' /> Edit
                 </Label>
                 <div className="names">
