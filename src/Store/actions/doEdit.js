@@ -29,6 +29,7 @@ export default function doEdit(card) {
 
     perform();
 
+
     return (dispatch, getState) => {
         let { abilities } = card;
         abilities = abilities.join(',');

@@ -1,13 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
-    "\\src\\Components",
-    "\\src\\Containers",
-    "\\src\\Store",
-    "\\src\\Store\\actions",
-    "\\src\\Store\\reducers"
+    "\\.github\\workflows"
   ],
-  "SelectedNode": "\\src\\Components\\Card.js",
   "PreviewInSolutionExplorer": false
 }
