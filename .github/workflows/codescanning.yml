@@ -1,0 +1,15 @@
+name: Code Scanning
+on:
+  push:
+    branches:
+      - frontend
+      - backend
+jobs:
+  codeql:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: github/codeql-action/init@v1
+        with: 
+            languages: js, css, html

@@ -1,11 +1,13 @@
 # Card Builder
 
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=uinstinct_card_builder)](https://sonarcloud.io/dashboard?id=uinstinct_card_builder)
+
 A Card Builder App which uses Postgres as it Database.
 
-### Runtime
 
-**This is the API for the backend which is using `NodeJS` as runtime with `Express` module for handling request**
 
-### Database
+## Frontend
 
-**This API is using `PostgreSQL` as it database with the `pg` (node postgres) module to _interact with NodeJs_**
+The frontend is made using **React and Redux** and **Axios** for api-calls.
+
+It has been deployed and can be found on [this url](https://charactercardbuilder.netlify.app).
