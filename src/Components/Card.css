@@ -21,7 +21,6 @@
 
 
 .character-card-v2 {
-    width: 100%;
     background-color: #c1beb4;
     border: 3px solid #c1beb4;
     border-radius: 10px;
@@ -44,7 +43,6 @@
         border-radius: calc(10px - 3px);
         text-align: center;
         overflow: hidden;
-/*        background-image: url("https://i.pinimg.com/736x/e3/3c/2f/e33c2fa94c03efa06678116f80d62d0d.jpg");*/
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 50% 10%;
@@ -130,8 +128,6 @@
         }
 
 .class-badge {
-    margin-top: 4px;
-    margin-bottom: 4px;
     display: inline-block;
     height: 1.43em;
     font-size: 1.5em;
@@ -169,7 +165,7 @@
   height: 100%;
   display: flex;
   
-  font-family:Bangers;
+  font-family: 'Bangers';
   font-size: 3rem;
   margin-top: 0.5rem;
   margin-bottom: 0.9rem;
