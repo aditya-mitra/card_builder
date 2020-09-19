@@ -24,8 +24,8 @@ function produceGrid(n, handleClick, cards, handleShow) {
         let row = [];
         for (let j = i; j < i+3 && j < n; j++) {
             let column =
-                <Grid.Column key={cards[j].id} onClick={handleClick} >
-                    <BuiltCard {...cards[j]} handleShow={handleShow} key={cards[j].id} cardId={cards[j].id}/>
+                <Grid.Column key={cards[j].id} onClick={handleClick} id={"carder-" + cards[j].id}>
+                    <BuiltCard {...cards[j]} handleShow={handleShow} key={cards[j].id} />
                 </Grid.Column>;
             row.push(column);
         }

@@ -36,7 +36,7 @@ function Card(props) {
     }
 
     return (
-        <div className={"character-card-v2 card-" + randomColour()} id={"carder-" + props.id}>
+        <div className={"character-card-v2 card-" + randomColour()}>
             <div className="portrait" style={{ backgroundImage: 'url(' + img + ')' }}>
             </div>
             <div className="details">
