@@ -25,7 +25,7 @@ function produceGrid(n, handleClick, cards, handleShow) {
         for (let j = i; j < i+3 && j < n; j++) {
             let column =
                 <Grid.Column key={cards[j].id} onClick={handleClick} >
-                    <BuiltCard {...cards[j]} handleShow={handleShow} key={cards[j].id} />
+                    <BuiltCard {...cards[j]} handleShow={handleShow} key={cards[j].id} cardId={cards[j].id}/>
                 </Grid.Column>;
             row.push(column);
         }
@@ -37,21 +37,25 @@ function produceGrid(n, handleClick, cards, handleShow) {
 
 const loader = (
     <div className="loader-container">
-        <div className="spinner-box">
-            <div className="blue-orbit leo">
-            </div>
+        {JSON.parse(localStorage.getItem('darkmode')) ? 
+            <div className="spinner-box">
+                <div className="blue-orbit leo">
+                </div>
 
-            <div className="green-orbit leo">
-            </div>
+                <div className="green-orbit leo">
+                </div>
 
-            <div className="red-orbit leo">
-            </div>
+                <div className="red-orbit leo">
+                </div>
 
-            <div className="white-orbit w1 leo">
-            </div><div className="white-orbit w2 leo">
-            </div><div className="white-orbit w3 leo">
+                <div className="white-orbit w1 leo">
+                </div><div className="white-orbit w2 leo">
+                </div><div className="white-orbit w3 leo">
+                </div>
             </div>
-        </div>
+            :
+            <div className="loader loader10" />            
+        }
         <div>
             <h1>Loading ...</h1>
         </div>

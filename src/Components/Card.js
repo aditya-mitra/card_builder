@@ -1,6 +1,6 @@
 import React from 'react';
 
-import fallbackImage from '../assets/fallback.jpg';
+//import fallbackImage from '../assets/fallback.jpg';
 import "./Card.css";
 import { Icon, Label } from 'semantic-ui-react';
 
@@ -36,11 +36,11 @@ function Card(props) {
     }
 
     return (
-        <div className={"character-card-v2 card-" + randomColour()}>
-            <div className="portrait" style={{ backgroundImage: 'url(' + img + "), url(" + fallbackImage +")" }}>
+        <div className={"character-card-v2 card-" + randomColour()} id={"carder-" + props.id}>
+            <div className="portrait" style={{ backgroundImage: 'url(' + img + ')' }}>
             </div>
             <div className="details">
-                <Label style={{ float: 'right', cursor: 'pointer', color: 'white', background: 'black' }} size='mini' onClick={() => { props.doEdit({ name, shows, abilities, img, id }); props.handleShow(); window.scrollTo({ top: '10rem', behavior:'smooth' }) }}>
+                <Label style={{ float: 'right', cursor: 'pointer', color: 'white', background: 'black' }} size='mini' onClick={() => { props.doEdit({ name, shows, abilities, img, id }); props.handleShow(); window.scrollTo({ top: '10rem', behavior: 'smooth' }) }}>
                     <Icon name='pencil alternate' inverted size='large' /> Edit
                 </Label>
                 <div className="names">
@@ -54,7 +54,8 @@ function Card(props) {
                     {listAbilities}
                 </div>
             </div>
-        </div>);
+        </div>
+    );
 }
 
 const connectedCard = connect(mapStateToProps, mapDispatchToProps)(Card);

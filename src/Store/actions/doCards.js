@@ -5,7 +5,7 @@ import { GET_ALL, PUT_ONE, UPDATE_ONE } from '../actionTypes';
 
 export function doGetAll() {
     return (dispatch, getState) => { // we are returning a function
-        console.log('we have getState as', getState());
+        //console.log('we have getState as', getState());
         // notice getState is a function. let num = 50 + getState().num
         getAll()
             .then(response => response.data)

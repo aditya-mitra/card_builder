@@ -5,15 +5,20 @@ import logo from '../assets/logo.png';
 import "./stylesheets/NavBar.css";
 import SearchBar from '../Components/SearchBar';
 
+
+
 class NavBar extends Component {
-    state = { darkmode: true };
+    state = { darkmode: false };
     componentDidMount() {
-        if (this.state.darkmode) {
+        const storedmode = JSON.parse(localStorage.getItem('darkmode'));
+        if (storedmode) {
+            this.setState({ darkmode: storedmode });
             document.body.setAttribute('data-theme', 'dark');
         }
     }
     handleClick() {
         this.setState(function (prevState) {
+            localStorage.setItem('darkmode', !prevState.darkmode);
             return { darkmode: !prevState.darkmode };
         })
         if (!this.state.darkmode) {
