@@ -4,9 +4,10 @@ on:
     branches:
       - frontend
       - backend
+      - master
 jobs:
   codeql:
-    name: SonarCloud
+    name: CodeQL
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
